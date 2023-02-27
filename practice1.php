@@ -37,20 +37,20 @@
     if(isset($_POST['login'])){
         include('config.php');
       
-        $NAME  = $_POST['studentname'];
+        $name  = $_POST['studentname'];
         $class = $_POST['class'];
-        // print($NAME);
-
-        $studentname= mysqli_real_escape_string($conn, $_POST['studentname']);
-      
+        $section =$_POST['section'];
+        $rollno = $_POST['rollno'];
+        $dob =$_POST['dob'];
        
-        $sql = "INSERT INTO `register` (`student name`, `class`,`section`,`rollno`,`dob`) VALUES ('$NAME', '$class','a','12','02-12-2000')";
+        $sql = "INSERT INTO `register` (`student name`, `class`,`section`,`rollno`,`dob`) VALUES ('$name', '$class','$section','$rollno','$dob')";
         $result= mysqli_query($conn, $sql) or die("Query Failed");
-        // if($result){
-        //     print($NAME);
-        // }else{
-        //     print("koi dikt hai ");
-        // }
+        if($result){
+            print($name);
+        }else{
+            print("error ");
+        }
+
     }
     ?>
 </body>
