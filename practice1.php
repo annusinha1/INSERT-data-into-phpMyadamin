@@ -31,8 +31,13 @@
             <lable>D.O.B</lable>
             <input type="text" name="dob" class="form-control">
         </div>
-        <input type="submit" name="login" class="btn btn-primary">
+        <input type="submit" name="login" class="btn btn-primary" onclick="btn()">
     </form>
+    <script>
+        function btn(){
+            alert(" successful submit");
+        }
+    </script>
     <?php
     if(isset($_POST['login'])){
         include('config.php');
@@ -45,11 +50,7 @@
        
         $sql = "INSERT INTO `register` (`student name`, `class`,`section`,`rollno`,`dob`) VALUES ('$name', '$class','$section','$rollno','$dob')";
         $result= mysqli_query($conn, $sql) or die("Query Failed");
-        if($result){
-            print($name);
-        }else{
-            print("error ");
-        }
+       
 
     }
     ?>
