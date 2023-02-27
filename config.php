@@ -3,14 +3,14 @@
 // $conn=  mysql_connect("localhost","root","","school");
 
 $conn= mysqli_connect("localhost", "root", "", "school");
- if($conn){
-    echo" done";
+//  if($conn){
+//     echo" done";
 
- }
- else{
+//  }
+//  else{
 
-    die(" ERROR: could not connect." . mysqli_connect_error());  
+//     die(" ERROR: could not connect." . mysqli_connect_error());  
 
 
- }
+//  }
 ?>
