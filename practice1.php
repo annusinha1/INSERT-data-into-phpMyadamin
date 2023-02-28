@@ -35,12 +35,14 @@
     </form>
     <script>
         function btn(){
-            alert(" successful submit");
+            alert("successful submit ");
         }
     </script>
+    <pre>
     <?php
+    require 'Database.php';
+    $db = DB::getInstance();
     if(isset($_POST['login'])){
-        include('config.php');
       
         $name  = $_POST['studentname'];
         $class = $_POST['class'];
@@ -48,11 +50,27 @@
         $rollno = $_POST['rollno'];
         $dob =$_POST['dob'];
        
-        $sql = "INSERT INTO `register` (`student name`, `class`,`section`,`rollno`,`dob`) VALUES ('$name', '$class','$section','$rollno','$dob')";
-        $result= mysqli_query($conn, $sql) or die("Query Failed");
-       
+        $result = $db->insert('register', [
+            "studentName" => $name, 
+            "class" => $class, 
+            "section" => $section, 
+            "rollNo" => $rollno, 
+            "dob" => $dob
+        ]);
 
+        if( $result == true ){
+
+           echo header("Location: /phpsql/practice1.php");
+            // if($getData){
+            //     print_r($getData);
+            // }       
+         }
     }
+
+    print_r( $db->from("register")
+    ->select("studentName")
+    ->get() );
+    
     ?>
 </body>
 </html>
